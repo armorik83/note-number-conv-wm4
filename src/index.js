@@ -1,19 +1,27 @@
 export default class Converter {
   /**
-   * @param {number} nn - note number
    * @param {string} scale
    */
-  constructor(nn, scale) {
-    this.nn = nn;
+  constructor(scale) {
     this.scale = scale;
     this.key = 0; // C = 0, D = 2, B = 11
+  }
+
+  setNoteNumber(nn) {
+    this.nn = nn;
+    return this;
+  }
+
+  setRowIndex(idx) {
+    this.idx = idx;
+    return this;
   }
 
   /**
    * @returns {number}
    */
   toRowIndex() {
-    const scaleArray = this[`${this.scaleArray()[this.scale]}`];
+    const scaleArray = this.scaleArray()[this.scale];
     const pitchNumber = this.allPitch()[this.noteName()];
 
     let additionalIdx = scaleArray.findIndex((v, i) => {
@@ -45,7 +53,8 @@ export default class Converter {
   scaleArray() {
     return {
       'major': [0, 2, 4, 5, 7, 9, 11],
-      'naturalMinor': [0, 2, 3, 5, 7, 8, 10]
+      'naturalMinor': [0, 2, 3, 5, 7, 8, 10],
+      'blues': [0, 3, 5, 6, 7, 10]
     };
   }
 
