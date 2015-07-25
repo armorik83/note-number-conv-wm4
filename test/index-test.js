@@ -58,6 +58,55 @@ describe('Converter', () => {
     });
   });
 
+  describe('toNoteNumber Major', () => {
+    const scale = 'major';
+    it('0 to nn G0 31', () => {
+      const conv = new Converter(scale).setRowIndex(0);
+      assert.equal(conv.toNoteNumber(), 31);
+    });
+
+    it('1 to nn A0 33', () => {
+      const conv = new Converter(scale).setRowIndex(1);
+      assert.equal(conv.toNoteNumber(), 33);
+    });
+
+    it('7 to nn G1 43', () => {
+      const conv = new Converter(scale).setRowIndex(7);
+      assert.equal(conv.toNoteNumber(), 43);
+    });
+
+    it('12 to nn E2 52', () => {
+      const conv = new Converter(scale).setRowIndex(12);
+      assert.equal(conv.toNoteNumber(), 52);
+    });
+  });
+
+  describe('toNoteNumber NaturalMinor', () => {
+    const scale = 'naturalMinor';
+    it('7 to nn G1 43', () => {
+      const conv = new Converter(scale).setRowIndex(7);
+      assert.equal(conv.toNoteNumber(), 43);
+    });
+
+    it('12 to nn D#2 51', () => {
+      const conv = new Converter(scale).setRowIndex(12);
+      assert.equal(conv.toNoteNumber(), 51);
+    });
+  });
+
+  describe('toNoteNumber Blues', () => {
+    const scale = 'blues';
+    it('7 to nn A#1 46', () => {
+      const conv = new Converter(scale).setRowIndex(7);
+      assert.equal(conv.toNoteNumber(), 46);
+    });
+
+    it('12 to nn G2 55', () => {
+      const conv = new Converter(scale).setRowIndex(12);
+      assert.equal(conv.toNoteNumber(), 55);
+    });
+  });
+
   describe('noteNameWithOctave', () => {
     const scale = 'major';
     it('0 to C-2', () => {

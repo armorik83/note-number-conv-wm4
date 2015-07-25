@@ -21,7 +21,7 @@ export default class Converter {
    * @returns {number}
    */
   toRowIndex() {
-    const scaleArray = this.scaleArray()[this.scale];
+    const scaleArray = this.scaleArray();
     const pitchNumber = this.allPitch()[this.noteName()];
 
     let additionalIdx = scaleArray.findIndex((v, i) => {
@@ -31,6 +31,14 @@ export default class Converter {
     // console.log(this.noteNameWithOctave(), pitchNumber, 'additionalIdx', additionalIdx);
 
     return this.octave() * 7 + additionalIdx;
+  }
+
+  toNoteNumber() {
+    const lower = 31; // key C G0
+    const octave = Math.floor(this.idx / this.scaleArray().length);
+    const additionalIdx = this.idx % this.scaleArray().length;
+    const additional = this.scaleArray()[additionalIdx]
+    return lower + (12 * octave) + additional;
   }
 
   allPitch() {
@@ -51,11 +59,16 @@ export default class Converter {
   }
 
   scaleArray() {
-    return {
-      'major': [0, 2, 4, 5, 7, 9, 11],
-      'naturalMinor': [0, 2, 3, 5, 7, 8, 10],
-      'blues': [0, 3, 5, 6, 7, 10]
-    };
+    const def = [0, 2, 4, 5, 7, 9, 11];
+
+    if (this.scale === 'major') {
+      return def;
+    } else if (this.scale === 'naturalMinor') {
+      return [0, 2, 3, 5, 7, 8, 10];
+    } else if (this.scale === 'blues') {
+      return [0, 3, 5, 6, 7, 10];
+    }
+    return def;
   }
 
   noteNameWithOctave() {
