@@ -13,14 +13,14 @@ export default class Converter {
    * @returns {number}
    */
   toRowIndex() {
-    const scaleArray = this[`${this.scale}Scale`]();
+    const scaleArray = this[`${this.scaleArray()[this.scale]}`];
     const pitchNumber = this.allPitch()[this.noteName()];
 
     let additionalIdx = scaleArray.findIndex((v, i) => {
       return pitchNumber <= v;
     });
 
-    console.log(this.noteNameWithOctave(), pitchNumber, 'additionalIdx', additionalIdx);
+    // console.log(this.noteNameWithOctave(), pitchNumber, 'additionalIdx', additionalIdx);
 
     return this.octave() * 7 + additionalIdx;
   }
@@ -42,12 +42,11 @@ export default class Converter {
     };
   }
 
-  majorScale() {
-    return [0, 2, 4, 5, 7, 9, 11];
-  }
-
-  naturalMinorScale() {
-    return [0, 2, 3, 5, 7, 8, 10];
+  scaleArray() {
+    return {
+      'major': [0, 2, 4, 5, 7, 9, 11],
+      'naturalMinor': [0, 2, 3, 5, 7, 8, 10]
+    };
   }
 
   noteNameWithOctave() {
