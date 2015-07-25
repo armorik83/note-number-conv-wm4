@@ -1,0 +1,29 @@
+{
+  "name": "note-number-conv-wm4",
+  "version": "0.0.1",
+  "description": "note-number-conv-wm4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://armorik83@github.com/armorik83/note-number-conv-wm4.git"
+  },
+  "author": "armorik83",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/armorik83/note-number-conv-wm4/issues"
+  },
+  "homepage": "https://github.com/armorik83/note-number-conv-wm4#readme",
+  "devDependencies": {
+    "babel": "^5.8.5",
+    "babel-eslint": "^3.1.26",
+    "eslint": "^0.24.1",
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.1.3",
+    "gulp-shell": "^0.4.2",
+    "run-sequence": "^1.1.2"
+  }
+}
