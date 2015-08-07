@@ -9,6 +9,7 @@ describe('Converter', () => {
 
   describe('toRowIndex Major', () => {
     const scale = 'major';
+
     it('G0 31 to idx 0', () => {
       const conv = new Converter(scale).setNoteNumber(31);
       assert.equal(conv.toRowIndex(), 0);
@@ -27,6 +28,16 @@ describe('Converter', () => {
     it('B0 35 to idx 2', () => {
       const conv = new Converter(scale).setNoteNumber(35);
       assert.equal(conv.toRowIndex(), 2);
+    });
+
+    it('C1 36 to idx 3', () => {
+      const conv = new Converter(scale).setNoteNumber(36);
+      assert.equal(conv.toRowIndex(), 3);
+    });
+
+    it('F1 41 to idx 6', () => {
+      const conv = new Converter(scale).setNoteNumber(41);
+      assert.equal(conv.toRowIndex(), 6);
     });
 
     it('G1 43 to idx 7', () => {

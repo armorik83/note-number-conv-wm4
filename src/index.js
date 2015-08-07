@@ -24,9 +24,13 @@ export default class Converter {
     const scaleArray = this.scaleArray();
     const pitchNumber = this.allPitch()[this.noteName()];
 
-    let additionalIdx = scaleArray.findIndex((v, i) => {
+    let additionalIdx = scaleArray.findIndex((v) => {
       return pitchNumber <= v;
     });
+
+    if (5 <= pitchNumber) {
+      additionalIdx -= 7;
+    }
 
     // console.log(this.noteNameWithOctave(), pitchNumber, 'additionalIdx', additionalIdx);
 
@@ -37,8 +41,8 @@ export default class Converter {
     const lower = 31; // key C G0
     const octave = Math.floor(this.idx / this.scaleArray().length);
     const additionalIdx = this.idx % this.scaleArray().length;
-    const additional = this.scaleArray()[additionalIdx]
-    return lower + (12 * octave) + additional;
+    const additional = this.scaleArray()[additionalIdx];
+    return lower + 12 * octave + additional;
   }
 
   allPitch() {
