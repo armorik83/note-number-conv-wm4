@@ -10,6 +10,11 @@ describe('Converter', () => {
   describe('toRowIndex Major', () => {
     const scale = 'major';
 
+    it('less than 30 to null', () => {
+      const conv = new Converter(scale).setNoteNumber(30);
+      assert.equal(conv.toRowIndex(), null);
+    });
+
     it('G0 31 to idx 0', () => {
       const conv = new Converter(scale).setNoteNumber(31);
       assert.equal(conv.toRowIndex(), 0);

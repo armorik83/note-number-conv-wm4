@@ -21,6 +21,8 @@ export default class Converter {
    * @returns {number}
    */
   toRowIndex() {
+    if (this.nn <= 30) { return null; }
+
     const scaleArray = this.scaleArray();
     const pitchNumber = this.allPitch()[this.noteName()];
 
